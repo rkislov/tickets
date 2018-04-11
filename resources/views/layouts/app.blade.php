@@ -8,7 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Документооборот - @yield('title')
+        {{--{{ config('app.name', 'Laravel') }}--}}
+
+
+    </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,13 +23,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/bootstrap3.css')}}">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{--{{ config('app.name', 'Laravel') }}--}}
+                    Документооборот
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,27 +40,38 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto" style="float: left;">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto"  style="float: right;">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a></li>
                         @else
+                            @if(Auth::user()->is_admin)
+                                <li><a class="nav-link" href="{{url('admin/tickets')}}"><i class="fa fa-btn fa-newspaper-o"></i> Документы</a></li>
+                                <li><a class="nav-link" href="{{url('my_tickets')}}"> <i class="fa fa-btn fa-inbox"></i> Мои докумменты</a></li>
+                                <li><a class="nav-link" href="{{url('new_ticket')}}"><i class="fa fa-btn fa-plus"></i> Создать</a></li>
+                            @else
+                                <li><a class="nav-link" href="{{url('my_tickets')}}"><i class="fa fa-btn fa-inbox"></i> Мои докумменты</a></li>
+                                <li><a class="nav-link" href="{{url('new_ticket')}}"><i class="fa fa-btn fa-plus"></i> Создать</a></li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <i class="fa fa-btn fa-user-circle-o"></i>
+                                    {{ Auth::user()->name }}
+                                    {{--<span class="caret"></span>--}}
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fa fa-btn fa-sign-out"></i>
+                                        {{ __('Выход') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -71,5 +89,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script> </html>
+    <script src="{{asset('js/bootstrap3.js')}}"></script> </html>
 </body>
-</html>
+
