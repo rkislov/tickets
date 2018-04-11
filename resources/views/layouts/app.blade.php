@@ -25,8 +25,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/bootstrap3.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
+
 </head>
-<body>
+<body style="background: ghostwhite;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -90,7 +91,20 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script> </html>
-    <script src="{{asset('js/bootstrap3.js')}}"></script> </html>
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap3.js')}}"></script>
+@yield('js')
 </body>
+<footer>
+<div class="footer">
+
+
+    <div class="text-lg-center">
+        <i class="fa fa-copyright"></i> 2018 г. written by Rkislov
+    </div>
+
+
+</div>
+</footer>
+</html>
 

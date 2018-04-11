@@ -29,4 +29,14 @@ Route::group(['prefix'=> 'admin', 'middleware'=>'admin'], function (){
    Route::get('tickets', 'TicketController@index');
    Route::post('close_ticket/{ticket_id}', 'TicketController@close');
    Route::get('settings', 'SettingsController@index')->name('settings');
+   Route::get('settings/users', 'SettingsController@usersList')->name('users_list');
+   Route::get('settings/groups', 'SettingsController@groupsList')->name('groups_list');
+   Route::get('settings/roles', 'SettingsController@rolesList')->name('roles_list');
+   Route::get('settings/categories', 'SettingsController@categoriesList')->name('categories_list');
+   Route::post('settings/categories', 'SettingsController@categoriesAdd')->name('categories_add');
+   Route::delete('settings/categories', 'SettingsController@categoriesDelete')->name('categories_delete');
+   Route::get('settings/roles', 'SettingsController@rolesList')->name('roles_list');
+   Route::post('settings/roles', 'SettingsController@rolesAdd')->name('roles_add');
+   Route::delete('settings/roles', 'SettingsController@rolesDelete')->name('roles_delete');
+
 });
