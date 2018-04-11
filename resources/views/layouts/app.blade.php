@@ -55,6 +55,7 @@
                                 <li><a class="nav-link" href="{{url('admin/tickets')}}"><i class="fa fa-btn fa-newspaper-o"></i> Документы</a></li>
                                 <li><a class="nav-link" href="{{url('my_tickets')}}"> <i class="fa fa-btn fa-inbox"></i> Мои докумменты</a></li>
                                 <li><a class="nav-link" href="{{url('new_ticket')}}"><i class="fa fa-btn fa-plus"></i> Создать</a></li>
+                                <li><a class="nav-link" href="{{route('settings')}}"><i class="fa fa-cog" aria-hidden="true"></i> Настройки</a></li>
                             @else
                                 <li><a class="nav-link" href="{{url('my_tickets')}}"><i class="fa fa-btn fa-inbox"></i> Мои докумменты</a></li>
                                 <li><a class="nav-link" href="{{url('new_ticket')}}"><i class="fa fa-btn fa-plus"></i> Создать</a></li>
